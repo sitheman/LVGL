@@ -1,6 +1,6 @@
 <component>
   <styles>
-    <style name="btn_style" bg_color="#3366FF" radius="8"/>
+    <style name="btn_style" bg_color="0x3366FF" radius="8"/>
   </styles>
   <view extends="lv_obj" width="content" height="content" align="center">
     <lv_button width="120" height="48" align="center">
