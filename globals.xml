@@ -1,0 +1,26 @@
+<globals>
+  <api>
+  </api>
+
+  <consts>
+    <int name="unit_sm" value="6" />
+    <int name="unit_md" value="12" />
+    <int name="unit_lg" value="18" />
+    <int name="unit_xl" value="24" />
+    <percentage name="opa_muted" value="20%" />
+  </consts>
+
+  <styles>
+    <style name="style_reset" width="content" height="content" bg_opa="0" border_width="0" radius="0" pad_all="0" />
+  </styles>
+
+  <subjects>
+    <int name="dark_theme" value="0" />
+  </subjects>
+
+  <images>
+  </images>
+
+  <fonts>
+  </fonts>
+</globals>
