@@ -1,4 +1,4 @@
-<project>
+<project name="LVGL">
   <folders>
     <folder path="components"/>
     <folder path="screens"/>
