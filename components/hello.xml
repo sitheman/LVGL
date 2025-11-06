@@ -1,7 +1,0 @@
-<component name="hello">
-  <view extends="lv_obj" width="content" height="content" align="center">
-    <widget type="lv_btn" width="120" height="48" align="center">
-      <widget type="lv_label" text="Hello LVGL Viewer" align="center"/>
-    </widget>
-  </view>
-</component>
