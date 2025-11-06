@@ -1,10 +1,7 @@
-<project>
-  <folders>
-    <folder path="."/>
-  </folders>
+<project name="ui_demo">
   <targets>
     <target name="default">
-      <display width="480" height="320" color_format="RGB565"/>
+      <display width="480" height="320" color_format="RGB565" />
     </target>
   </targets>
 </project>
