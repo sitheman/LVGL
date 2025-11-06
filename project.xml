@@ -1,6 +1,7 @@
 <project>
   <folders>
     <folder path="components"/>
+    <folder path="screens"/>
   </folders>
   <targets>
     <target name="default">
