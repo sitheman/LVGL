@@ -1,8 +1,8 @@
 <screen name="home">
   <view extends="lv_obj" width="100%" height="100%">
-    <widget type="lv_label" text="Hello, LVGL!" align="center"/>
-    <widget type="lv_btn" width="120" height="48" align="center" y="40">
-      <widget type="lv_label" text="Click Me!" align="center"/>
+    <widget type="lv_label" text="Hello, LVGL!" align="CENTER"/>
+    <widget type="lv_btn" width="120" height="48" align="CENTER" y="40">
+      <widget type="lv_label" text="Click Me!" align="CENTER"/>
     </widget>
   </view>
 </screen>
