@@ -1,0 +1,119 @@
+<span id="xml-overview"></span><h1>Overview<a class="headerlink" href="#overview" title="Link to this heading">-¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">-¶</a></h2>
+<p>LVGL's XML Module implements LVGL's Declarative UI by making it possible to describe
+UIs in XML.</p>
+<p>Using XML instead of pure drag-and-drop editing has several advantages:</p>
+<ul class="simple">
+<li><p><strong>Familiar syntax</strong> works like HTML, easy to learn and read</p></li>
+<li><p><strong>Version control friendly</strong> plain text with human-readable diffs, no binary files</p></li>
+<li><p><strong>Easy to share</strong> copy, paste, and send as text</p></li>
+<li><p><strong>Reusable patterns</strong> copy and reuse snippets across projects</p></li>
+<li><p><strong>Automation ready</strong> scripts and CI/CD can process XML effortlessly</p></li>
+<li><p><strong>AI compatible</strong> AI tools can read, generate, and refactor XML</p></li>
+<li><p><strong>Modular by design</strong> create reusable components for structured UIs</p></li>
+<li><p><strong>Fast to edit</strong> quicker to type than to drag and drop with a mouse</p></li>
+<li><p><strong>Runtime loading</strong> parse XML at runtime without recompiling</p></li>
+<li><p><strong>Cross-platform</strong> the same XML works across all LVGL targets</p></li>
+</ul>
+<p>The XML file can be written by hand, but it's highly recommended to use <code class="docutils literal notranslate"><span class="pre">LVGL</span> <span class="pre">Pro's</span>
+<span class="pre">Editor</span> <span class="pre">&lt;editor&gt;</span></code> to write the XML files. The Editor makes UI development much faster by
+providing features like:</p>
+<ul class="simple">
+<li><p>Instant preview of the XML files (components, screens)</p></li>
+<li><p>Inspector mode to visualize widget sizes, paddings, etc.</p></li>
+<li><p>Generate C code from XML files</p></li>
+<li><p>Autocomplete and syntax highlighting</p></li>
+<li><p>Online share/preview for collaboration and testing</p></li>
+<li><p><a class="reference external" href="https://www.figma.com/">Figma</a> integration to easily reimplement Figma designs</p></li>
+</ul>
+</section>
+<section id="ui-elements">
+<h2>UI Elements<a class="headerlink" href="#ui-elements" title="Link to this heading">-¶</a></h2>
+<p>It is important to distinguish between <em class="dfn">Widgets</em>, <em class="dfn">Components</em>, and <em class="dfn">Screens</em>.</p>
+<section id="widgets">
+<h3>Widgets<a class="headerlink" href="#widgets" title="Link to this heading">-¶</a></h3>
+<p><em class="dfn">Widgets</em> are the core building blocks of the UI and are <strong>not meant to be loaded at runtime</strong>
+but rather compiled into the application as C code. The main characteristics of Widgets are:</p>
+<ul class="simple">
+<li><p>In XML, they start with a <code class="docutils literal notranslate"><span class="pre">&lt;widget&gt;</span></code> root element.</p></li>
+<li><p>They are similar to LVGL's built-in widgets.</p></li>
+<li><p>They can contain custom and complex logic.</p></li>
+<li><p>They cannot be loaded from XML at runtime because the custom code cannot be loaded.</p></li>
+<li><p>They can have a large and custom API with <code class="docutils literal notranslate"><span class="pre">set/get/add</span></code> functions.</p></li>
+<li><p>A custom XML parser is needed to map XML properties to API function calls.</p></li>
+<li><p>They can be compound, containing other Widgets (e.g., <code class="docutils literal notranslate"><span class="pre">Tabview</span></code>'s tabs, <code class="docutils literal notranslate"><span class="pre">Dropdown</span></code>'s lists).</p></li>
+<li><p>In the UI editor, they can also be described in XML to create visuals more quickly and export C code.</p></li>
+</ul>
+</section>
+<section id="components">
+<h3>Components<a class="headerlink" href="#components" title="Link to this heading">-¶</a></h3>
+<p><em class="dfn">Components</em> are simpler UI elements and <strong>can be loaded at runtime</strong>.
+The main characteristics of Components are:</p>
+<ul class="simple">
+<li><p>In XML, they start with a <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;</span></code> root element.</p></li>
+<li><p>They are built from Widgets and/or other Components.</p></li>
+<li><p>They are defined only in XML and cannot have custom C code (but they can call C functions as event callbacks).</p></li>
+<li><p>They can be loaded from XML since they contain only XML.</p></li>
+<li><p>They can be used for styling Widgets and other Components, using data bindings via subjects, defining animations, etc.</p></li>
+<li><p>As children, they can contain Widgets and/or other Components.</p></li>
+<li><p>They can have a simple API to pass properties to their children (e.g., <code class="docutils literal notranslate"><span class="pre">btn_text</span></code> to a Label's text).</p></li>
+</ul>
+<p>Whether the XML was written manually or by the UI-·Editor, the files
+defining Components can be registered in LVGL, and after that, instances can be created.</p>
+<p>In other words, LVGL can read the XML files, &quot;learn&quot; the Components from them, and
+thereafter create children as part of Screens and other Components.</p>
+</section>
+<section id="screens">
+<h3>Screens<a class="headerlink" href="#screens" title="Link to this heading">-¶</a></h3>
+<p><em class="dfn">Screens</em> are similar to Components:</p>
+<ul class="simple">
+<li><p>In XML, they start with a <code class="docutils literal notranslate"><span class="pre">&lt;screen&gt;</span></code> root element.</p></li>
+<li><p>They are built from Widgets and/or other Components to describe the <a class="reference internal" href="../../common-widget-features/screens.html#screens"><span class="std std-ref">Screen</span></a>.</p></li>
+<li><p>They can be loaded from XML at runtime since they describe only visual aspects of the UI.</p></li>
+<li><p>They do not have an API.</p></li>
+<li><p>They can be referenced in screen load events.</p></li>
+</ul>
+</section>
+</section>
+<section id="global-data">
+<h2>Global data<a class="headerlink" href="#global-data" title="Link to this heading">-¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">globals.xml</span></code> is a special XML file in which globally available</p>
+<ul class="simple">
+<li><p>styles</p></li>
+<li><p>constants</p></li>
+<li><p>images</p></li>
+<li><p>fonts</p></li>
+<li><p>subjects for data bindings</p></li>
+</ul>
+<p>can be defined.</p>
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">globals.xml</span></code> files can be loaded if needed, but each will be saved in the same global scope,
+meaning duplicated items will be added only once.</p>
+</section>
+<section id="using-the-xml-files">
+<h2>Using the XML Files<a class="headerlink" href="#using-the-xml-files" title="Link to this heading">-¶</a></h2>
+<p>The XML files can be used in two ways:</p>
+<ol class="arabic simple">
+<li><p>Load them directly at runtime</p></li>
+<li><p>Convert them to C code by using the Editor or the CLI</p></li>
+</ol>
+<p>Both use cases are covered in detail in the <a class="reference internal" href="../integration/index.html#editor-integration"><span class="std std-ref">Integration</span></a>
+section.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="syntax.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Syntax</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.ht
