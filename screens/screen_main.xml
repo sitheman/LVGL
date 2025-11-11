@@ -1,0 +1,9 @@
+<screen>
+  <view>
+    <lv_button width="160" height="60" x="10" y="10">
+      <subject_set_string_event trigger="clicked" subject="status" value="Clicked!"/>
+      <lv_label text="Click me"/>
+    </lv_button>
+    <lv_label x="10" y="90" bind_text="status"/>
+  </view>
+</screen>

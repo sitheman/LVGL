@@ -1,0 +1,10 @@
+<project name="ui_demo">
+  <targets>
+    <target name="default">
+      <display width="320" height="240" color_format="RGB565" />
+      <screens initial="home">
+        <screen id="home" src="screens/home.xml" />
+      </screens>
+    </target>
+  </targets>
+</project>
