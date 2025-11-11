@@ -1,5 +1,0 @@
-<screen>
-  <view>
-    <lv_label x="10" y="10" text="Hello LVGL Viewer" />
-  </view>
-</screen>
