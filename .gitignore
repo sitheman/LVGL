@@ -1,0 +1,15 @@
+/build/
+/out/
+/.vs/
+CMakeCache.txt
+CMakeFiles/
+*.user
+*.suo
+*.pdb
+*.exe
+*.obj
+*.log
+*.vcxproj*
+.DS_Store
+temp/
+external/lvgl/.git
